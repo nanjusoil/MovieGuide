@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
@@ -15,11 +16,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.esoxjem.movieguide.BaseApplication;
@@ -125,9 +128,16 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsView, 
                     .setOnSliderClickListener(this);
 
             //add your extra information
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle()
-                    .putString("extra",name);
+            //textSliderView.bundle(new Bundle());
+            //textSliderView.getBundle()
+                    //.putString("extra",name);
+
+            textSliderView.setOnSliderClickListener(new TextSliderView.OnSliderClickListener() {
+                @Override
+                public void onSliderClick(BaseSliderView baseSliderView) {
+                    Snackbar.make(MovieDetailsFragment.super.getView(), baseSliderView.getUrl(), Snackbar.LENGTH_SHORT).show();
+                }
+            });
 
             mDemoSlider.addSlider(textSliderView);
         }
@@ -135,6 +145,7 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsView, 
         mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
         mDemoSlider.setDuration(4000);
+
         return rootView;
     }
 
