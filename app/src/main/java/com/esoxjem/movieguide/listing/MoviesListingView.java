@@ -13,4 +13,6 @@ interface MoviesListingView
     void loadingStarted();
     void loadingFailed(String errorMessage);
     void onMovieClicked(Movie movie);
+    void onSortingChanged();
+    void resetScroll();
 }

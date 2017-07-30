@@ -156,6 +156,11 @@ public class MoviesListingFragment extends Fragment implements MoviesListingView
     }
 
     @Override
+    public void onSortingChanged()
+    {
+        this.movies.clear();
+    }
+    @Override
     public void onDestroyView()
     {
         super.onDestroyView();
@@ -175,6 +180,11 @@ public class MoviesListingFragment extends Fragment implements MoviesListingView
     {
         super.onDestroy();
         ((BaseApplication) getActivity().getApplication()).releaseListingComponent();
+    }
+
+    @Override
+    public void resetScroll(){
+        scrollListener.resetScroll();;
     }
 
     public interface Callback

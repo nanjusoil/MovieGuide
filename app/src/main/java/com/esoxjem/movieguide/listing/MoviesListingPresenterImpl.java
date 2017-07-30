@@ -40,10 +40,18 @@ class MoviesListingPresenterImpl implements MoviesListingPresenter
     @Override
     public void displayMovies(int page)
     {
+        if(page == 1)
+            view.onSortingChanged();
         showLoading();
         fetchSubscription = moviesInteractor.fetchMovies(page).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::onMovieFetchSuccess, this::onMovieFetchFailed);
+    }
+
+    @Override
+
+    public void resetScroll(){
+        view.resetScroll();
     }
 
     private void showLoading()

@@ -6,6 +6,7 @@ package com.esoxjem.movieguide.util;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 
 public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScrollListener {
@@ -30,6 +31,7 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
 
         visibleItemCount = recyclerView.getChildCount();
         totalItemCount = mLinearLayoutManager.getItemCount();
+        Log.d("itemcount", String.valueOf(totalItemCount));
         firstVisibleItem = mLinearLayoutManager.findFirstVisibleItemPosition();
 
         if (loading) {
@@ -49,6 +51,10 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
 
             loading = true;
         }
+    }
+
+    public void resetScroll(){
+        previousTotal = 0;
     }
 
     public abstract void onLoadMore(int current_page);

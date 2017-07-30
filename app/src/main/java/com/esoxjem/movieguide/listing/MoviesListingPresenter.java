@@ -9,5 +9,7 @@ public interface MoviesListingPresenter
 
     void setView(MoviesListingView view);
 
+    void resetScroll();
+
     void destroy();
 }
