@@ -9,13 +9,10 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.esoxjem.movieguide.BaseApplication;
 import com.esoxjem.movieguide.Movie;
 import com.esoxjem.movieguide.R;
@@ -38,7 +35,6 @@ public class MoviesListingFragment extends Fragment implements MoviesListingView
     @Bind(R.id.movies_listing)
     RecyclerView moviesListing;
     private EndlessRecyclerOnScrollListener scrollListener;
-
 
     private RecyclerView.Adapter adapter;
     private List<Movie> movies = new ArrayList<>(20);

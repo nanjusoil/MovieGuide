@@ -28,8 +28,7 @@ class MoviesListingPresenterImpl implements MoviesListingPresenter
     public void setView(MoviesListingView view)
     {
         this.view = view;
-        displayMovies(1);
-    }
+        displayMovies(1);}
 
     @Override
     public void destroy()
